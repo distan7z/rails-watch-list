@@ -1,0 +1,13 @@
+<h1><%= @list.name %></h1>
+<% @bookmarks.each do |bookmark| %>
+    <p>There are <%= @bookmarks.count %> bookmarks in this list</p>
+    <p><%= bookmark.movie.rating %>/5 - <%= bookmark.movie.title %></p>
+    <p><%= bookmark.movie.overview %></p>
+    <%= image_tag bookmark.movie.poster_url, alt: "movie-poster", width: 200 %>
+      <br>
+    <p>User comment: <%= bookmark.comment %></p>
+      <br>
+    <p><%= button_to "Remove this bookmark from my list", bookmark_path(bookmark), method: :delete %></p>
+<% end %>
+<br>
+<p><%= render 'bookmarks/form', list:@list, bookmark:@bookmark %></p>
